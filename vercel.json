@@ -1,0 +1,30 @@
+{
+  "name": "won-musicals",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/sw.js",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Service-Worker-Allowed": "/"
+      }
+    }
+  ],
+  "functions": {
+    "app/api/generate-audio/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://your-supabase-url.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "your-supabase-anon-key",
+    "ELEVENLABS_API_KEY": "your-elevenlabs-api-key",
+    "VOICE_ID": "your-voice-id"
+  }
+}
